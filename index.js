@@ -3,8 +3,6 @@ var datatxt = "";
 var attd = new Date();
 var dataatual = attd.getDay() + attd.getMonth() + attd.getFullYear();
 
-console.log(dataatual);
-
 const prompt = require("prompt-sync")();
 
 dt();
@@ -62,56 +60,87 @@ function id(){
 }
 
 function pp(){
-
     
-    var quantidade = 0;
+    quantidade = 0;
 
-    var participantes = [prompt("Adicione um participante: "),];
+    participantes = [prompt("Adicione um participante: "),];
     console.log("Adicionou: " + participantes[quantidade]);
     quantidade = quantidade + 1;
     var save = quantidade;
     console.log("Quantidade: " + quantidade);
     var add = prompt("Deseja adicionar mais participantes? S ou N ?");
+    rept();
     
-console.log(participantes);
 
-    if(add == "s" || add == "S"){
+function rept(){
+
+    if(quantidade <= 100 && add == "s" || add == "S"){
+    add = " ";
     participantes[quantidade] = prompt("Adicione um participante: ");
     console.log("Adicionou: " + participantes[quantidade]);
     quantidade = quantidade + 1;
     var save = quantidade;
     console.log("Quantidade: " + quantidade);
-    console.log(participantes);
-    var add = prompt("Deseja adicionar mais participantes? S ou N ?");
-    console.log(quantidade);
+    add = prompt("Deseja adicionar mais participantes? S ou N ?");
+    rept();
     }
     
-    if(add == "s" || add == "S" && quantidade > 100){
-    console.log("Não é possível adicionar mais de 100 participantes!");
+    if(quantidade <= 100 && add == "n" || add == "N"){
     pp2();
     }
     
-
+    else{
+    console.log("Não é possível adicionar mais de 100 participantes!");
+    pp2();    
+    }
+    
+}
+        
 }
 
 function pp2(){
 
-var quantidade2 = 0;
+quantidade2 = 0;
 
-var palestrantes = [prompt("Adicione um palestrante: ")];
+palestrantes = [prompt("Adicione um palestrante: ")];
 console.log("Adicionou: " + palestrantes[quantidade2]);
 quantidade2 = quantidade2 + 1;
 var save2 = quantidade2;
 console.log("Quantidade: " + quantidade2);
 var add2 = prompt("Deseja adicionar mais palestrantes? S ou N? ");
+rept2();
 
-if(add2 == "S" || add2 == "s"){
-pp2();
-}
+function rept2(){
 
-if(add2 == "N" || add2 == "n"){
+    if(quantidade2 <= 5 && add2 == "s" || add2 == "S"){
+    add2 = " ";
+    palestrantes[quantidade2] = prompt("Adicione um palestrante: ");
+    console.log("Adicionou: " + palestrantes[quantidade2]);
+    quantidade2 = quantidade2 + 1;
+    var save = quantidade2;
+    console.log("Quantidade: " + quantidade2);
+    add2 = prompt("Deseja adicionar mais participantes? S ou N ?");
+    rept2();
+    }
+    
+    if(quantidade2 <= 5 && add2 == "n" || add2 == "N"){
+    console.log("Relatório do cadastro:");
+    console.log("Data do evento: " + datatxt);
+    for(var x = 0; x < quantidade; x++ ){
+    console.log("Participante: " + participantes[x]);
+    }
+    for(var y = 0; y < quantidade2; y++ ){
+    console.log("Palestrante: " + palestrantes[y]);
+    }
+    }
+    
+    else{
+    console.log("Não é possível adicionar mais de 5 palestrantes!");
+    
+    }
 
 
+    
 }
 
 }
