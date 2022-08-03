@@ -83,6 +83,7 @@ console.log(participantes);
     console.log("Quantidade: " + quantidade);
     console.log(participantes);
     var add = prompt("Deseja adicionar mais participantes? S ou N ?");
+    console.log(quantidade);
     }
     
     if(add == "s" || add == "S" && quantidade > 100){
@@ -90,9 +91,6 @@ console.log(participantes);
     pp2();
     }
     
-    if(add == "n" || add == "N"){
-    pp2();
-    }
 
 }
 
