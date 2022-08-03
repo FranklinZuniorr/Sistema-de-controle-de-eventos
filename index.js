@@ -1,48 +1,70 @@
 var status = 0;
 var datatxt = "";
 var attd = new Date();
-var dataatual = attd.getDay() + attd.getMonth() + attd.getFullYear();
+var dia = attd.getDay();
+var mes = attd.getMonth();
+var ano = attd.getFullYear();
+var dados = [];
 
-const prompt = require("prompt-sync")();
+var prompt = require("prompt-sync")();
 
-dt();
+d();
 
-
-function dt(){
-
-    var data = prompt("Qual será o dia do evento? "); 
-    console.log("Adicionou: " + data);
-    datatxt = "" + data;
-    var datasoma = parseInt(data);
-    data = prompt("Qual será o mês do evento? ");
-    console.log("Adicionou: " + data);
-    datatxt = datatxt + "/" + data;
-    datasoma = datasoma + parseInt(data);
-    data = prompt("Qual será o ano do evento? ");
-    console.log("Adicionou: " + data);
-    datatxt = datatxt + "/" + data;
-    datasoma = datasoma + parseInt(data);
-    data = datasoma;
-    console.log(data);
-
-    console.log("Data adicionada: " + datatxt);
+function d(){
+    d1a = prompt("Qual será o dia do evento? ");
+    console.log("Adicionou: " + d1a);
 
     status = 1;
 
-    if(data < dataatual && status == 1){
-    console.log("Insira uma data posterior à atual!");
-    dt();
+    if(d1a <= dia && status == 1){
+    console.log("Adicione um dia posterior ao dia atual!");
+    d();
     }
 
-    if(data > dataatual && status == 1){
+    if(d1a > dia && status == 1){
+    m();
+    status = 0;
+    }
+}
+
+function m(){
+    m3s = prompt("Qual será o mês do evento? ");
+    console.log("Adicionou: " + m3s);
+
+    status = 1;
+
+    if(m3s < mes && status == 1){
+    console.log("Adicione um mês posterior ou igual ao mês atual! ");
+    m();
+    }
+
+    if(m3s >= mes && status == 1){
+    a();
+    status = 0;
+    }
+}
+
+function a(){
+    an0 = prompt("Qual será o ano do evento? ");
+    console.log("Adicionou: " + an0);
+
+    status = 1;
+
+    if(an0 < ano && status == 1){
+    console.log("Adicione um ano posterior ou igual ao ano atual! ");
+    a();    
+    }
+
+    if(an0 >= ano && status == 1){
+    datatxt = "" + d1a + "/" + m3s + "/" + an0;
+    status = 0;
     id();
-    status = 0; 
     }
 }
 
 function id(){
  
-    var idade = prompt("Qual a sua idade?" );
+    idade = prompt("Qual a sua idade?" );
     console.log("Adicionou: " + idade);
  
     status = 1;
@@ -60,102 +82,44 @@ function id(){
 }
 
 function pp(){
-    
-    quantidade = 0;
+    participantes = prompt("Serão quantos participantes? ");
+    console.log("Adicionou: " + participantes);
 
-    participantes = [prompt("Adicione um participante: "),];
-    console.log("Adicionou: " + participantes[quantidade]);
-    quantidade = quantidade + 1;
-    var save = quantidade;
-    console.log("Quantidade: " + quantidade);
-    var add = prompt("Deseja adicionar mais participantes? S ou N ?");
-    rept();
-    
+    status = 1;
 
-function rept(){
-
-    if(quantidade <= 100 && add == "s" || add == "S"){
-    add = " ";
-    participantes[quantidade] = prompt("Adicione um participante: ");
-    console.log("Adicionou: " + participantes[quantidade]);
-    quantidade = quantidade + 1;
-    var save = quantidade;
-    console.log("Quantidade: " + quantidade);
-    add = prompt("Deseja adicionar mais participantes? S ou N ?");
-    rept();
-    }
-    
-    if(quantidade <= 100 && add == "n" || add == "N"){
-    pp2();
-    }
-    
-    else{
+    if(participantes > 100 && status == 1){
     console.log("Não é possível adicionar mais de 100 participantes!");
-    pp2();    
+    pp();
     }
-    
+
+    if(participantes <= 100 && status == 1){
+    status = 0;
+    pl();
+    }
 }
-        
-}
 
-function pp2(){
+function pl(){
+    palestrantes = prompt("Serão quantos palestrantes? ");
+    console.log("Adicionou: " + palestrantes);
 
-quantidade2 = 0;
+    status = 1;
 
-palestrantes = [prompt("Adicione um palestrante: ")];
-console.log("Adicionou: " + palestrantes[quantidade2]);
-quantidade2 = quantidade2 + 1;
-var save2 = quantidade2;
-console.log("Quantidade: " + quantidade2);
-var add2 = prompt("Deseja adicionar mais palestrantes? S ou N? ");
-rept2();
-
-function rept2(){
-
-    if(quantidade2 <= 5 && add2 == "s" || add2 == "S"){
-    add2 = " ";
-    palestrantes[quantidade2] = prompt("Adicione um palestrante: ");
-    console.log("Adicionou: " + palestrantes[quantidade2]);
-    quantidade2 = quantidade2 + 1;
-    var save = quantidade2;
-    console.log("Quantidade: " + quantidade2);
-    add2 = prompt("Deseja adicionar mais palestrantes? S ou N ?");
-    rept2();
-    }
-    
-    if(add2 == "n" || add2 == "N"){
-    add2 = " ";
-    fim();
-    }
-    
-    if(quantidade2 >= 5){
-    add2 = " ";
+    if(palestrantes > 5 && status == 1){
     console.log("Não é possível adicionar mais de 5 palestrantes!");
-    fim();
+    pl();
     }
-
-
     
-}
-
-
-
-}
-
-function fim(){
-    console.log("Relatório do cadastro:");
-    console.log("Data do evento: " + datatxt);
-    for(var x = 0; x < quantidade; x++ ){
-    console.log("Participante: " + participantes[x]);
+    if(palestrantes <= 5 && status == 1){
+    status = 0;
+    log();
     }
-    for(var y = 0; y < quantidade2; y++ ){
-    console.log("Palestrante: " + palestrantes[y]);
-    }
-    clc();
-
 }
 
-function clc(){
-
-    console.log("Cadastro realizado com sucesso!");
+function log(){
+   dados = ["Cadastro concluído:", "Data: " + datatxt, "Participantes: " + participantes, "Palestrantes: " + palestrantes];
+   var medir = dados.length;
+   
+   for(var x = 0; x < medir; x++){
+   console.log(dados[x]);
+   }
 }
