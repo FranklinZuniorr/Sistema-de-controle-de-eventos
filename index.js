@@ -119,11 +119,30 @@ function rept2(){
     quantidade2 = quantidade2 + 1;
     var save = quantidade2;
     console.log("Quantidade: " + quantidade2);
-    add2 = prompt("Deseja adicionar mais participantes? S ou N ?");
+    add2 = prompt("Deseja adicionar mais palestrantes? S ou N ?");
     rept2();
     }
     
-    if(quantidade2 <= 5 && add2 == "n" || add2 == "N"){
+    if(add2 == "n" || add2 == "N"){
+    add2 = " ";
+    fim();
+    }
+    
+    if(quantidade2 >= 5){
+    add2 = " ";
+    console.log("Não é possível adicionar mais de 5 palestrantes!");
+    fim();
+    }
+
+
+    
+}
+
+
+
+}
+
+function fim(){
     console.log("Relatório do cadastro:");
     console.log("Data do evento: " + datatxt);
     for(var x = 0; x < quantidade; x++ ){
@@ -132,15 +151,11 @@ function rept2(){
     for(var y = 0; y < quantidade2; y++ ){
     console.log("Palestrante: " + palestrantes[y]);
     }
-    }
-    
-    else{
-    console.log("Não é possível adicionar mais de 5 palestrantes!");
-    
-    }
+    clc();
 
-
-    
 }
 
+function clc(){
+
+    console.log("Cadastro realizado com sucesso!");
 }
