@@ -1,1 +1,0 @@
-Foram criados 6 galhos [fn1, fn2, fn3, fn4, fn5, develop] e um tronco [Main]. Agora conecte seu projeto ao repositorio remoto usando: git remote add origin (LINK), após esse processo, envie todas as branches usando: git push --all origin ou git push -u origin NOME DA BRANCH. 
