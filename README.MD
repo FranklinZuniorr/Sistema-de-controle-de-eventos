@@ -1,1 +1,1 @@
-Gerador de estrutura 
+Funcionalidade 1 
