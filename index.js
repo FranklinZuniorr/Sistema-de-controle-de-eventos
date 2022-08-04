@@ -6,6 +6,8 @@ var mes = attd.getMonth();
 var ano = attd.getFullYear();
 var dados = [];
 
+console.log("Sistema de controle de eventos:");
+
 var prompt = require("prompt-sync")();
 
 d();
@@ -70,11 +72,11 @@ function id(){
     status = 1;
  
     if(idade < 18 && status == 1 ){
-    console.log("É necessário ter mais de 18 anos para prosseguir!");
+    console.log("É necessário possuir 18 anos para prosseguir!");
     id();
     }
  
-    if(idade > 18 && status == 1){
+    if(idade >= 18 && status == 1){
     pp();
     status = 0;
     }
@@ -122,4 +124,6 @@ function log(){
    for(var x = 0; x < medir; x++){
    console.log(dados[x]);
    }
+
+   prompt("Sistema finalizado!");
 }
