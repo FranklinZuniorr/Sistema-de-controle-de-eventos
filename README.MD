@@ -1,1 +1,1 @@
-Funcionalidade 1 
+Estrutura do sistema, funcionalidade 1.
