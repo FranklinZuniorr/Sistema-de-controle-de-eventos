@@ -1,2 +1,2 @@
-Sistema de controle de eventos em .js
-Inicie o arquivo "Iniciar sistema.bat" para rodar o programa.
+Sistema de controle de eventos em .js,
+inicie o arquivo "Iniciar sistema.bat" para rodar o programa.
