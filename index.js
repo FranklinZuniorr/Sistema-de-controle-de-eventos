@@ -9,6 +9,7 @@ var dados = [];
 console.log("Sistema de controle de eventos:");
 
 var prompt = require("prompt-sync")();
+const fs = require('fs');
 
 d();
 
@@ -124,6 +125,18 @@ function log(){
    for(var x = 0; x < medir; x++){
    console.log(dados[x]);
    }
+    
+   dados = ["Cadastro concluído: *", "Data: " + datatxt + "*", "Participantes: " + participantes + "*", "Palestrantes: " + palestrantes];
+
+   dadosrefinados = dados[0].replace("*", "\n");
+   dadosrefinados = dadosrefinados + dados[1].replace("*", "\n");
+   dadosrefinados = dadosrefinados + dados[2].replace("*", "\n");
+   dadosrefinados = dadosrefinados + dados[3].replace("*", "\n");
+   datarefinada = "" + d1a + "-" + m3s + "-" + an0;
+
+   const data = dadosrefinados;
+   fs.writeFileSync(datarefinada + ".txt", data);
+   console.log("Relatório.txt do cadastro adicionado a pasta do sistema!");
 
    prompt("Sistema finalizado!");
 }
